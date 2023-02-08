@@ -192,6 +192,6 @@ Temporary Items
 .history
 .ionide
 
-src/main/resources/config/
+src/main/resources/config/Wallet_MyDias
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,intellij,java,visualstudiocode
