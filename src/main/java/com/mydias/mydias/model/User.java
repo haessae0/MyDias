@@ -15,8 +15,8 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "TB_USER")
-public class User {
+@Table(name = "TB_USERS")
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
     private Long USER_NO;
