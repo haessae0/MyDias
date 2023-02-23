@@ -20,10 +20,10 @@ import java.sql.Timestamp;
 @Table(name = "TN_BOARD")
 public class Board {
     @Id
-    private Long ATC_NO;
+    private String ATC_NO;
     private String TITLE;
-    private String EMAIL;
-    private Long ATC_CNT;
+    private String CONTENTS;
+    private int ATC_CNT;
     private String USE_YN;
     @CreationTimestamp
     private Timestamp INST_DTM;

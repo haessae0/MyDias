@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 리스트 페이지</title>
+</head>
+
+<style>
+    .layout {
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 40px;
+    }
+</style>
+<body>
+
+<div class="layout">
+    <table>
+        <thead>
+        <tr>
+            <th>순번</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>조회수</th>
+            <th>입력일시</th>
+            <th>입력자</th>
+            <th>사용여부</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="board:${list}">
+            <td th:text="${board.atcNo}">ATC_NO</td>
+            <td th:text="${board.title}">TITLE</td>
+            <td th:text="${board.contents}">CONTENTS</td>
+            <td th:text="${board.atcCnt}">ATC_CNT</td>
+            <td th:text="${board.instDtm}">INST_DTM</td>
+            <td th:text="${board.instId}">INST_ID</td>
+            <td th:text="${board.useYn}">USE_YN</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<form class="my-login-validation" method="POST" novalidate="" th:action="@{/board/insert}" th:object="${Board}">
+    <div class="form-group">
+        <label for="title">title</label>
+        <input autofocus class="form-control" id="title" name="title" required th:name="title" type="text">
+    </div>
+
+    <div class="form-group">
+        <label for="contents">contents</label>
+        <input autofocus class="form-control" id="contents" name="contents" required th:name="contents" type="text">
+    </div>
+
+    <div class="form-group">
+        <label for="email">E-Mail Address</label>
+        <input class="form-control" id="email" name="email" required th:name="email" type="email">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" data-eye id="password" name="password" required th:name="password" type="password">
+    </div>
+
+    <div class="form-group">
+        <div class="custom-checkbox custom-control">
+            <input class="form-check-input" id="USE_YN"
+                   name="USE_YN" type="radio" value="Y">
+            <label class="form-check-label" for="USE_YN">사용</label>
+        </div>
+    </div>
+
+    <div class="form-group m-0">
+        <button class="btn btn-primary btn-block" type="submit">
+            Register
+        </button>
+    </div>
+    <div class="mt-4 text-center">
+        Already have an account? <a th:href="@{'/'}">Login</a>
+    </div>
+</form>
+
+</body>
+</html>
