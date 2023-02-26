@@ -1,11 +1,16 @@
 package com.mydias.mydias.repository;
 
-import com.mydias.mydias.model.User;
-import org.apache.ibatis.annotations.Mapper;
+import com.mydias.mydias.vo.UserVO;
 
-import java.util.List;
-
-@Mapper
 public interface UserDao {
-    List<User> selectList();
+
+    // 회원가입
+    public void register(UserVO user);
+
+    // 로그인
+    public UserVO login(UserVO user);
+
+    UserVO selectUser(String email);
+
+    public int emailChk(UserVO user);
 }
