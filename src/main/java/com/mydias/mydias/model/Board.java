@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.sql.Timestamp;
 
 @Data
@@ -15,24 +17,18 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "TB_USER")
-public class User {
+@Table(name = "TN_BOARD")
+public class Board {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    private Long USER_NO;
-    private String USER_NM;
-    private String EMAIL;
-    private String NICKNAME;
-    private String PHONE_NO;
-    private String PASSWD_ENC;
-    @UpdateTimestamp
-    private Timestamp PASSWD_CHG_DTM;
+    private String ATC_NO;
+    private String TITLE;
+    private String CONTENTS;
+    private int ATC_CNT;
+    private String USE_YN;
     @CreationTimestamp
     private Timestamp INST_DTM;
+    private String INST_ID;
     @UpdateTimestamp
     private Timestamp UPDT_DTM;
-    @Column(length = 1)
-    private String USER_YN;
-
-
+    private String UPDT_ID;
 }

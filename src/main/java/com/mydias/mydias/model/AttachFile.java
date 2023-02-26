@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Data
@@ -15,24 +16,21 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "TB_USER")
-public class User {
+@Table(name = "TN_ATTACH_FILE")
+public class AttachFile implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-    private Long USER_NO;
-    private String USER_NM;
-    private String EMAIL;
-    private String NICKNAME;
-    private String PHONE_NO;
-    private String PASSWD_ENC;
-    @UpdateTimestamp
-    private Timestamp PASSWD_CHG_DTM;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ATC_NO")
+    private Board ATC_NO;
+    private Long SEQ_NO;
+    private String FILE_PATH;
+    private String FILE_NM;
+    private String ORG_FILE_NM;
+    private String FILE_SIZE;
     @CreationTimestamp
     private Timestamp INST_DTM;
+    private String INST_ID;
     @UpdateTimestamp
     private Timestamp UPDT_DTM;
-    @Column(length = 1)
-    private String USER_YN;
-
-
+    private String UPDT_ID;
 }

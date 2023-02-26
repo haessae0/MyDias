@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mydias.mydias.repository.BoardDao">
+    <select id="selectList" parameterType="com.mydias.mydias.model.Board"
+            resultType="com.mydias.mydias.model.Board">
+        SELECT *
+        FROM TN_BOARD
+        ORDER BY INST_DTM DESC
+    </select>
+
+    <select id="makeArticleNumber" resultType="string">
+        SELECT TO_CHAR(SYSDATE, 'YYMM') || LPAD(count(*) + 1, 4, 0)
+        FROM TN_BOARD
+    </select>
+
+    <insert id="insertArticle">
+        INSERT INTO TN_BOARD
+            (ATC_NO, ATC_CNT, TITLE, CONTENTS, INST_DTM, INST_ID, USE_YN)
+        VALUES (#{atcNo}, 0, #{title}, #{contents}, SYSDATE, #{instId}, #{useYn, jdbcType=VARCHAR})
+    </insert>
+</mapper>

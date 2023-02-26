@@ -8,14 +8,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Controller
 @RequiredArgsConstructor
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -28,7 +33,7 @@ public class UserController {
         logger.info("회원가입 페이지 진입");
         return "user/register";
     }
-
+    
     // 회원가입
     @PostMapping("/user/register")
     public String register(UserVO user) throws Exception{
@@ -65,5 +70,10 @@ public class UserController {
     public int emailChk(UserVO user){
         int result = userService.emailChk(user);
         return result;
+        
+    @GetMapping("/index")
+    public List<User> index() {
+        List<User> list = userDao.selectList();
+        return list;
     }
 }
