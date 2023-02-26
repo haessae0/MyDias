@@ -5,12 +5,9 @@ import com.mydias.mydias.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -67,13 +64,8 @@ public class UserController {
     }
 
     @RequestMapping("/user/emailChk")
-    public int emailChk(UserVO user){
+    public int emailChk(UserVO user) {
         int result = userService.emailChk(user);
         return result;
-        
-    @GetMapping("/index")
-    public List<User> index() {
-        List<User> list = userDao.selectList();
-        return list;
     }
 }
