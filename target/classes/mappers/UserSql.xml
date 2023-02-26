@@ -2,10 +2,31 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.mydias.mydias.repository.UserDao">
-    <select id="selectList" parameterType="com.mydias.mydias.model.User"
-            resultType="com.mydias.mydias.model.User">
+<mapper namespace="UserSql">
+    <!-- 회원가입 -->
+    <insert id="register">
+        INSERT INTO TB_USER(USER_NO, EMAIL, NICKNAME, PASSWD_ENC, PHONE_NO, USER_NM, USER_YN, INST_DTM)
+        VALUES (#{userNo}, #{email}, #{nickName}, #{passwdEnc}, #{phoneNo}, #{userNm}, 'Y', SYSDATE)
+    </insert>
+    <!-- 로그인 -->
+    <select id="login" resultType="com.mydias.mydias.vo.UserVO">
+        SELECT EMAIL, PASSWD_ENC
+        FROM TB_USER
+        WHERE EMAIL = #{email}
+          AND PASSWD_ENC = #{passwdEnc}
+    </select>
+
+    <!-- 회원검색 -->
+    <select id="selectUser" resultType="com.mydias.mydias.vo.UserVO">
         SELECT *
         FROM TB_USER
+        WHERE EMAIL = #{email}
+    </select>
+
+    <!-- 아이디 중복 체크 -->
+    <select id="emailChk" resultType="int">
+        SELECT COUNT(*)
+        FROM TB_USER
+        WHERE EMAIL = #{email}
     </select>
 </mapper>

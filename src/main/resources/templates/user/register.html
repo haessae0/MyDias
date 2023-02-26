@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Title</title>
+</head>
+<script>
+
+    $(document).ready(function(){
+        //회원가입 버튼(회원가입 기능 작동)
+        $(".join_button").click(function(){
+            $("#join_form").attr("action", "/mydias/user");
+            $("#join_form").submit();
+        });
+    });
+
+</script>
+<body>
+<form id="join_form" action="/mydias/user/register" method="post">
+    회원번호<input type="text" name="userNo"><br/>
+    이메일<input type="text" name="email"><br/>
+    비밀번호<input type="passWord" name="passwdEnc"><br/>
+    이름<input type="text" name="userNm"><br/>
+    닉네임<input type="text" name="nickName"><br/>
+    전화번호<input type="text" name="phoneNo"><br/>
+    <input type="submit" value="가입하기">
+</form>
+</body>
+</html>

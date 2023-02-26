@@ -1,10 +1,15 @@
 package com.mydias.mydias.service;
 
-import com.mydias.mydias.model.User;
-
-import java.util.List;
+import com.mydias.mydias.vo.UserVO;
 
 public interface UserService {
+   // 회원가입
+   public void register(UserVO user);
 
-    List<User> selectList();
+   // 로그인
+   UserVO login(UserVO user);
+
+   UserVO selectUser(String email);
+
+   public int emailChk(UserVO user);
 }
